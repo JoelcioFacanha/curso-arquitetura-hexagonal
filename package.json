@@ -1,0 +1,30 @@
+{
+    "name": "arqhex",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "start": "npx tsc-watch --onSuccess \"node ./dist/index.js\"",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "bcrypt": "^6.0.0",
+        "dotenv": "^17.2.3",
+        "express": "^5.2.1",
+        "pg-promise": "^12.3.0",
+        "uuid": "^13.0.0"
+    },
+    "devDependencies": {
+        "@tsconfig/recommended": "^1.0.13",
+        "@types/bcrypt": "^6.0.0",
+        "@types/express": "^5.0.6",
+        "@types/node": "^25.0.8",
+        "@types/pg-promise": "^0.0.28",
+        "@types/uuid": "^10.0.0",
+        "tsc-watch": "^7.2.0",
+        "typescript": "^5.9.3"
+    }
+}
