@@ -1,11 +1,14 @@
+import dotenv from "dotenv"
+dotenv.config()
+
 import express from "express"
 
 const app = express()
+const port = process.env.API_PORT ?? 4000
 
-app.get("/", (req, res) => {
-    res.send("Bem-vindo ao curso de nodejs! - tsc-watch")
-})
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
 
-app.listen(3000, () => {
-    console.log("servidor ativo porta: 3000")
+app.listen(port, () => {
+    console.log(`🔥 Servidor executando na porta ${port}`)
 })
