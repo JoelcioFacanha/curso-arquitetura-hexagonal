@@ -13,7 +13,7 @@
         "paths": {
             "@shared/*": ["src/core/shared/*"],
             "@usuario/*": ["src/core/usuario/*"],
-            "@adapter/*": ["src/adapter/*"]
+            "@external/*": ["src/external/*"]
         }
     },
     "compileOnSave": true,
