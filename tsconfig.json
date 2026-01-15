@@ -9,14 +9,14 @@
         "noEmitOnError": true, // Não gera o código JS caso haja algum erro durante o processo de compilação
         "strictNullChecks": true, // Força a verificação de valores null ou undefined
         "noUnusedLocals": true, // Sinaliza quando existem variaveis declaradas e não utilizadas
-        "baseUrl": ".", // define o diretório base a partir do qual o Typescript começa a resolver os imports não relativos
+        "baseUrl": "./src", // define o diretório base a partir do qual o Typescript começa a resolver os imports não relativos
         "paths": {
-            "@shared/*": ["src/core/shared/*"],
-            "@usuario/*": ["src/core/usuario/*"],
-            "@external/*": ["src/external/*"]
+            "@shared/*": ["core/shared/*"],
+            "@usuario/*": ["core/usuario/*"],
+            "@external/*": ["external/*"]
         }
     },
     "compileOnSave": true,
     "include": ["src/**/*"],
-    "exclude": ["**/.spec.ts"]
+    "exclude": ["**/*.spec.ts"]
 }

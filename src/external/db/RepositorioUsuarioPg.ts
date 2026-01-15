@@ -1,6 +1,6 @@
-import RepositorioUsuario from "@usuario/service/RepositorioUsuario"
-import db from "./db"
 import Usuario from "@usuario/model/Usuario"
+import RepositorioUsuario from "@usuario/service/RepositorioUsuario"
+import db from "./Postgresdb"
 
 export default class RepositorioUsuarioPg implements RepositorioUsuario {
     async inserir(usuario: Usuario) {
@@ -12,10 +12,16 @@ export default class RepositorioUsuarioPg implements RepositorioUsuario {
     }
 
     async buscarPorEmail(email: string): Promise<Usuario | null> {
-        return await db.oneOrNone(
-            `
+        try {
+            return await db.oneOrNone(
+                `
             select * from usuarios where email = $1`,
-            [email]
-        )
+                [email]
+            )
+        } catch (error) {
+            console.log(error)
+        }
+
+        return null
     }
 }
