@@ -3,7 +3,7 @@ import ProvedorJwt from "../ProvedorJwt"
 import Usuario from "@usuario/model/Usuario"
 import RepositorioUsuarioPg from "@external/db/RepositorioUsuarioPg"
 
-export default function UsuarioMiddleware(repositorio: RepositorioUsuarioPg) {
+export default function UsuarioMiddleware(repo: RepositorioUsuarioPg) {
     return async (req: Request, res: Response, next: NextFunction) => {
         const acessoNegado = () => res.status(403).send("Token inválido")
 
@@ -17,7 +17,7 @@ export default function UsuarioMiddleware(repositorio: RepositorioUsuarioPg) {
         const provedorJwt = new ProvedorJwt(String(process.env.JWT_SECRET))
         const usuarioToken = provedorJwt.obter(token) as Usuario
 
-        const usuario = repositorio.buscarPorEmail(usuarioToken.email)
+        const usuario = repo.buscarPorEmail(usuarioToken.email)
 
         if (!usuario) {
             acessoNegado()

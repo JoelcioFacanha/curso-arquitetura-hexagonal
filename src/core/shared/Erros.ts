@@ -1,6 +1,7 @@
 const Erros = {
     USUARIO_JA_EXISTE: "USUARIO_JA_EXISTE",
     SENHA_INVALIDA: "SENHA_INVALIDA",
+    PRODUTO_JA_EXISTE: "PRODUTO_JA_EXISTE",
 } as const
 
 export default Erros

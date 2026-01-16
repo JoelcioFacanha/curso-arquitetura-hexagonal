@@ -1,8 +1,11 @@
 import LoginUsuarioController from "@external/api/LoginUsuarioController"
 import ObterProdutoPorIdController from "@external/api/ObterProdutoPorIdController"
+import RegistrarProdutoController from "@external/api/RegistrarProdutoController"
 import RegistrarUsuarioController from "@external/api/RegistrarUsuarioController"
 import SenhaCrypto from "@external/auth/SenhaBcrypt"
+import RepositorioProdutoPg from "@external/db/RepositorioProdutoPg"
 import RepositorioUsuarioPg from "@external/db/RepositorioUsuarioPg"
+import RegistrarProduto from "@produto/service/RegistrarProduto"
 import LoginUsuario from "@usuario/service/LoginUsuario"
 import RegistrarUsuario from "@usuario/service/RegistrarUsuario"
 import ObterProdutoPorId from "core/produto/service/ObterProdutoPorId"
@@ -23,12 +26,15 @@ app.listen(port, () => {
 
 //-------------------------------------------- Rota abertas
 const repositorioUsuario = new RepositorioUsuarioPg()
+const repositorioProduto = new RepositorioProdutoPg()
 const provedorCripto = new SenhaCrypto()
 
 const registrarUsuario = new RegistrarUsuario(repositorioUsuario, provedorCripto)
 const loginUsuario = new LoginUsuario(repositorioUsuario, provedorCripto)
-const produtoPorId = new ObterProdutoPorId()
+const registrarProduto = new RegistrarProduto(repositorioProduto)
+const produtoPorId = new ObterProdutoPorId(repositorioProduto)
 
 new RegistrarUsuarioController(app, registrarUsuario)
 new LoginUsuarioController(app, loginUsuario)
+new RegistrarProdutoController(app, registrarProduto)
 new ObterProdutoPorIdController(app, produtoPorId)

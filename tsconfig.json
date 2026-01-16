@@ -13,6 +13,7 @@
         "paths": {
             "@shared/*": ["core/shared/*"],
             "@usuario/*": ["core/usuario/*"],
+            "@produto/*": ["core/produto/*"],
             "@external/*": ["external/*"]
         }
     },
